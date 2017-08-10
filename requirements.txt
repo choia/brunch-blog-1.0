@@ -1,0 +1,14 @@
+bleach==2.0.0
+Django==1.11.3
+django-js-asset==0.1.1
+django-markdownify==0.2.0
+django-markdownx==2.0.21
+html5lib==0.999999999
+Markdown==2.6.8
+markdown2==2.3.4
+olefile==0.44
+Pillow==4.2.1
+pkg-resources==0.0.0
+pytz==2017.2
+six==1.10.0
+webencodings==0.5.1

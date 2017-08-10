@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'brunch010_app',
+    'markdownx',
+    'markdownify',
 ]
 
 MIDDLEWARE = [

@@ -5,43 +5,36 @@
 {% for query in queryset %}
 <div class="row">
 <div class="col-md-8">
-		<div class="title">
-		  <a href="{{ query.get_absolute_url }}"><strong>{{ query.title }}</strong></a>
-		</div>
-		<p>{{ query.content|linebreaks|truncatechars:280 }}</p></br>
-		<div class="label_by">
-		<span class="">{{ query.date_added|date:'M d, Y' }}</span> | Post by
-		<span class="label label-primary">{{ request.user }}</span>		
-		</br><hr>
-		</div>
-		
+	<div class="title">
+	  <a href="{{ query.get_absolute_url }}"><strong>{{ query.title }}</strong></a>
+	</div>
+	  </br><p>{{ query.content|truncatechars_html:195 }}</p></br>
+	<div class="label_by">
+	  <span>{{ query.date_added|date:'M d, Y' }}</span> | Post by 
+      <span class="label label-primary">{{ request.user }}</span></br>
+	</div>	
 </div> <!-- col-md-9 -->
-<div class="col-md-3 col-custom">
-{% if query.image %}
 
-<img src="{{ query.image.url }}" class="img-responsive" alt="image" />
-
-{% endif %}
+<div class="col-md-2 col-custom">
+  {% if query.image %}
+    <img src="{{ query.image.url }}" class="img-responsive" alt="image" />
+  {% endif %}
 </div>
 </div> <!-- row -->
-
+<hr class="hr-custom">
 {% endfor %}
 
 	<div class="pagination">
 	    <span class="step-links">
 	        {% if queryset.has_previous %}
-	            <a href="?page={{ queryset.previous_page_number }}">Prev</a>
-	        {% endif %}
-
+	          <a href="?page={{ queryset.previous_page_number }}">Prev</a>	        
+	        {% endif %}	        
 	        {% if queryset.has_next %}
-	            <a href="?page={{ queryset.next_page_number }}">Next</a>
-	        {% endif %}
-
-	        <span class="current">Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}</span>
+	          <a href="?page={{ queryset.next_page_number }}">Next</a>
+	        {% endif %}	     
+	        <!-- <h4><span class="current">Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}</span></h4> -->
 	    </span>
 	</div>
-
-
 
 {% endblock content %}
 

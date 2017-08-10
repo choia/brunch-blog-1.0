@@ -5,7 +5,8 @@
 	
 	<p><a href="{% url 'brunch010:post_home' %}">Back to Main Page</a></p>
 	<h2><strong>{{ instance.title }}</strong></h2>
-	{{ instance.content|safe }} <br/>
+	<p>{{ instance.get_html|safe }}</p>
+	<br/>
 	
 </div>
 {% endblock content %}

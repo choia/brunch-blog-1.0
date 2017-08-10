@@ -2,11 +2,12 @@
 
 {% block content %}
 
-<h2>Form</h2>
 <form method="POST" action="" enctype="multipart/form-data">
   {% csrf_token%}
   {{ form.as_p }}
   <button name="Submit">Submit</button>
 </form>
+
+{{form.media}}
 
 {% endblock content %}
