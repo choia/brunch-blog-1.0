@@ -10,7 +10,7 @@ from .models import Post
 '''Main Home Page'''
 def post_home(request):
 	queryset_list = Post.objects.all().order_by('-date_added')
-	paginator = Paginator(queryset_list, 8)
+	paginator = Paginator(queryset_list, 6)
 	page = request.GET.get('page')
 	try:
 		queryset = paginator.page(page)
