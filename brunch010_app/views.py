@@ -79,4 +79,3 @@ def post_delete(request):
 
 	return render(request, 'delete.html', context)
 
-

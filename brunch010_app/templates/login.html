@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="col-md-9 col-md-offset-2">
+
+	<form method="POST" action="{% url 'brunch010:user_login' %}">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button name="login">Log In</button>
+	<input type="hidden" name="next" value="{% url 'brunch010:post_home' %}" />
+	</form>
+	
+</div>
+{% endblock content %}

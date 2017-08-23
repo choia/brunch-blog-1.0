@@ -4,10 +4,12 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 
 
+
 class Post(models.Model):
+
+	categories = models.CharField(max_length=15)
 	title = models.CharField(max_length=180)
 	email = models.EmailField()
-	# content = models.TextField()
 	content = MarkdownxField()
 	date_added = models.DateTimeField(auto_now_add=True)
 	date_updated = models.DateTimeField(auto_now=True)
