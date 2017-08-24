@@ -15,23 +15,28 @@
 
 <body>
 
-	<nav class="navbar navbar-default navbar-static-top">
+	<nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
           </button> -->
-          <a class="navbar-brand" href="#">Brunch</a>
+          <a class="navbar-brand" href="{% url 'brunch010:post_home' %}">Brunch</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#">Home</a></li>
+            <li><a href="{% url 'brunch010:post_home' %}">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Projects</a></li>
             <li><a href="#">Contacts</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+          {% if user.is_authenticated %}
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Logout</a></li>
+          </ul>
+          {% endif %}
+        </div><!--/.nav-collapse -->        
       </div>
     </nav>
 

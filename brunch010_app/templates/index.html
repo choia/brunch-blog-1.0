@@ -9,9 +9,10 @@
 	  <a href="{{ query.get_absolute_url }}"><strong>{{ query.title }}</strong></a>
 	</div>
 	  </br><p>{{ query.get_html|striptags|truncatechars_html:185 }}</p>
-	<div class="label-text-color">
-	  <span class="label-text">{{ query.date_added|date:'M d, Y' }} | Post by</span>
+	<div class="label-text-color">	  
+	  <span class="label-text-color">Post by </span>
       <span class="label label-primary">{{ query.user.get_full_name }}</span>
+      <span class="label label-default">{{ query.date_added|date:'M d, Y' }}</span>
       <span class="label label-success">{{ query.categories }}</span>
 	</div>	
 </div> <!-- col-md-9 -->
