@@ -1,12 +1,13 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 
 
-
 class Post(models.Model):
 
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	categories = models.CharField(max_length=15)
 	title = models.CharField(max_length=180)
 	email = models.EmailField()
