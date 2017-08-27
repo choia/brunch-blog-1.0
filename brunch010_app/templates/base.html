@@ -44,41 +44,7 @@
 {% endblock content %}  
 </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function(){
-
-      $(".content-markdown").each(function(){
-        var content = $(".content-markdown").val()
-        $(this).html(content)
-      })
-      
-      $(".content-markdown img").each(function(){               
-        $(this).addClass("img-responsive");
-      })
-    
-
-      var contentItem = $("#id_content");
-      function setContent(value){
-        var markedContent = marked(value)
-
-        console.log(markedContent)
-        $("#preview-content").html(markedContent)
-            
-        $("#preview-content img").each(function(){
-        $(this).addClass("img-responsive")
-        })
-      }
-
-      setContent(contentItem.val())
-      contentItem.keyup(function(){
-        var newContent = $(this).val()
-        setContent(newContent)
-      })
-    })
-  </script>
 </body>
 
 </html>
