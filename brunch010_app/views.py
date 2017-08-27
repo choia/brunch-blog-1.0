@@ -66,7 +66,7 @@ def post_update(request, id=None):
 			return HttpResponseRedirect(instance.get_absolute_url())
 
 	context = {
-		"form": form
+		"form": form,
 	}
 
 	return render(request, 'forms.html', context)

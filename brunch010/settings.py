@@ -37,10 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
+    # Local App
     'brunch010_app',
+    # Third Party
     'markdownx',
     'markdownify',
+    'crispy_forms',
 ]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,6 +76,7 @@ TEMPLATES = [
         },
     },
 ]
+FORM_RENDERER='django.forms.renderers.TemplatesSetting'
 
 WSGI_APPLICATION = 'brunch010.wsgi.application'
 
@@ -127,3 +135,4 @@ STATICFILES_DIRS = [
     ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'mediafiles'
+
