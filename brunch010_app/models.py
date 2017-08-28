@@ -8,11 +8,10 @@ from markdownx.utils import markdownify
 class Post(models.Model):
 
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	categories = models.CharField(max_length=15)
+	categories = models.CharField(max_length=25)
 	title = models.CharField(max_length=180)
 	email = models.EmailField()
-	# content = MarkdownxField()
-	content = models.TextField()
+	content = MarkdownxField()
 	date_added = models.DateTimeField(auto_now_add=True)
 	date_updated = models.DateTimeField(auto_now=True)
 	height_field = models.IntegerField(default=0)

@@ -8,6 +8,14 @@
 				"markedContent"
 			],
 			[
+				"mar",
+				"markdownify"
+			],
+			[
+				"cont",
+				"content-markdown"
+			],
+			[
 				"conte",
 				"contentItem"
 			],
@@ -18,10 +26,6 @@
 			[
 				"marked",
 				"markedContent"
-			],
-			[
-				"mar",
-				"marked"
 			],
 			[
 				"content",
@@ -152,10 +156,7 @@
 	"buffers":
 	[
 		{
-			"contents": "from django.contrib.auth.models import User\nfrom django.db import models\nfrom django.urls import reverse\nfrom markdownx.models import MarkdownxField\nfrom markdownx.utils import markdownify\n\n\nclass Post(models.Model):\n\n\tuser = models.ForeignKey(User, on_delete=models.CASCADE)\n\tcategories = models.CharField(max_length=15)\n\ttitle = models.CharField(max_length=180)\n\temail = models.EmailField()\n\tcontent = MarkdownxField()\n\tdate_added = models.DateTimeField(auto_now_add=True)\n\tdate_updated = models.DateTimeField(auto_now=True)\n\theight_field = models.IntegerField(default=0)\n\twidth_field = models.IntegerField(default=0)\n\timage = models.ImageField(null=True, blank=True, height_field=\"height_field\", width_field=\"width_field\")\n\n\n\tdef __str__(self):\n\t\treturn self.title\n\t\n\n\tdef get_absolute_url(self):\n\t\treturn reverse(\"brunch010:post_detail\", kwargs={\"id\": self.id})\n\n\n\tdef get_html(self):\n\t\treturn markdownify(self.content)\n",
 			"file": "brunch010_app/models.py",
-			"file_size": 956,
-			"file_write_time": 131481553038448346,
 			"settings":
 			{
 				"buffer_size": 924,
@@ -167,7 +168,24 @@
 			"file": "brunch010_app/views.py",
 			"settings":
 			{
-				"buffer_size": 1846,
+				"buffer_size": 1822,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "brunch010_app/templates/index.html",
+			"settings":
+			{
+				"buffer_size": 1330,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "brunch010_app/templates/forms.html",
+			"settings":
+			{
+				"buffer_size": 353,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -176,25 +194,7 @@
 			"file": "brunch010_app/templates/base.html",
 			"settings":
 			{
-				"buffer_size": 3048,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "brunch010_app/templates/forms.html",
-			"settings":
-			{
-				"buffer_size": 532,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "brunch010_app/forms.py",
-			"settings":
-			{
-				"buffer_size": 196,
+				"buffer_size": 1955,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -203,7 +203,7 @@
 			"file": "static/css/base.css",
 			"settings":
 			{
-				"buffer_size": 1611,
+				"buffer_size": 1612,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -245,11 +245,10 @@
 		"/home/alex/Project/brunch-project/brunch010",
 		"/home/alex/Project/brunch-project/brunch010_app",
 		"/home/alex/Project/brunch-project/brunch010_app/templates",
-		"/home/alex/Project/brunch-project/brunch010_app/templates/markdownx",
-		"/home/alex/Project/brunch-project/static",
+		"/home/alex/Project/brunch-project/media",
 		"/home/alex/Project/brunch-project/static/css",
-		"/home/alex/Project/brunch-project/staticfiles",
-		"/home/alex/Project/brunch-project/staticfiles/admin/css",
+		"/home/alex/Project/brunch-project/staticfiles/admin",
+		"/home/alex/Project/brunch-project/staticfiles/markdownx",
 		"/home/alex/Project/brunch-project/staticfiles/markdownx/admin",
 		"/home/alex/Project/brunch-project/staticfiles/markdownx/admin/css",
 		"/home/alex/Project/brunch-project/staticfiles/markdownx/js"
@@ -257,9 +256,10 @@
 	"file_history":
 	[
 		"/home/alex/Project/brunch-project/brunch010_app/templates/markdownx/widget2.html",
-		"/home/alex/Project/brunch-project/brunch010_app/forms.py",
-		"/home/alex/Project/brunch-project/brunch010_app/templates/index.html",
 		"/home/alex/Project/brunch-project/brunch010/settings.py",
+		"/home/alex/Project/brunch-project/brunch010_app/forms.py",
+		"/home/alex/Project/brunch-project/static/css/base.css",
+		"/home/alex/Project/brunch-project/brunch010_app/templates/index.html",
 		"/home/alex/Project/brunch-project/brunch010_app/templates/detail.html",
 		"/home/alex/Project/brunch-project/brunch010_app/templates/login.html",
 		"/home/alex/Project/brunch-project/brunch010_app/urls.py",
@@ -268,7 +268,6 @@
 		"/home/alex/Project/brunch-project/brunch010_app/templates/contacts.html",
 		"/home/alex/Project/brunch-project/brunch010_app/templates/registration/login.html",
 		"/home/alex/Project/brunch-project/brunch010_app/templates/base.html",
-		"/home/alex/Project/brunch-project/static/css/base.css",
 		"/home/alex/Project/brunch-project/brunch010_app/admin.py",
 		"/home/alex/Project/brunch-project/brunch010_app/templates/forms.html",
 		"/home/alex/Project/brunch-project/requirements.txt",
@@ -323,7 +322,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -339,8 +338,8 @@
 						"selection":
 						[
 							[
-								419,
-								419
+								319,
+								319
 							]
 						],
 						"settings":
@@ -352,7 +351,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -361,15 +360,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1846,
+						"buffer_size": 1822,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1679,
-								1679
+								1625,
+								1625
 							]
 						],
 						"settings":
@@ -377,57 +376,27 @@
 							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 315.0,
+						"translation.y": 495.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "brunch010_app/templates/base.html",
-					"semi_transient": false,
+					"file": "brunch010_app/templates/index.html",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 3048,
+						"buffer_size": 1330,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1459,
-								1459
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 456.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "brunch010_app/templates/forms.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 532,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								450,
-								450
+								0,
+								0
 							]
 						],
 						"settings":
@@ -438,29 +407,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "brunch010_app/forms.py",
+					"buffer": 3,
+					"file": "brunch010_app/templates/forms.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 196,
+						"buffer_size": 353,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								50,
-								50
+								244,
+								244
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -470,20 +439,50 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "static/css/base.css",
+					"buffer": 4,
+					"file": "brunch010_app/templates/base.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1611,
+						"buffer_size": 1955,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1611,
-								1611
+								590,
+								590
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "static/css/base.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1612,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1612,
+								1612
 							]
 						],
 						"settings":
