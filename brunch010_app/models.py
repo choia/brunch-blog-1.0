@@ -29,3 +29,17 @@ class Post(models.Model):
 
 	def get_html(self):
 		return markdownify(self.content)
+
+
+	def get_next(self):
+		next = Post.objects.filter(id__gt=self.id)
+		if next:
+			return next.first()
+		return False
+
+
+	def get_prev(self):
+		prev = Post.objects.filter(id__lt=self.id).order_by('-id')
+		if prev:
+			return prev.first()
+		return False

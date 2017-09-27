@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-md-9 col-md-offset-2">
-	
+
+<div class="col-md-8 col-md-offset-2">
+
 	<p><a href="{% url 'brunch010:post_home' %}">Back to Main Page</a></p>
-	<h2><strong>{{ instance.title }}</strong></h2>
-	<p>{{ instance.get_html|safe }}</p>
-	<br/>
+	
+	{% if instance.get_prev %}
+	<p><a href="{{ instance.get_prev.id }}">Previous Topic</a></p>
+	{% endif %}
+	{% if instance.get_next %}
+	<p><a href="{{ instance.get_next.id }}">Next Topic</a></p>
+	{% endif %}
+
+	  <div class="detail-title">{{ instance.title }}</div><hr/>
+	  {% if instance.image %}
+        <img src="{{ instance.image.url }}" class="img-responsive" alt="image" />
+	  {% endif %}
+	<p>{{ instance.get_html|safe }}</p><br/>
 	
 </div>
 {% endblock content %}

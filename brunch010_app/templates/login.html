@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<div class="col-md-9 col-md-offset-2">
+<div class="col-md-4 col-md-offset-2">
 
 	<form method="POST" action="{% url 'brunch010:user_login' %}">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<button name="login">Log In</button>
+	{{ form|crispy }}
+	<button class="btn btn-default btn-lg" type="submit" name="login">Log In</button>
 	<input type="hidden" name="next" value="{% url 'brunch010:post_home' %}" />
 	</form>
 	

@@ -46,7 +46,6 @@ def post_create(request):
 def post_detail(request, id):
 	instance = get_object_or_404(Post, id=id)
 	context = {
-		"title": instance.title,
 		"instance": instance,
 	}
 
