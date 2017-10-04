@@ -5,6 +5,10 @@ from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 
 
+def upload_location(instance, filename):
+	return "%s/%s" % (instance.id, filename)
+
+
 class Post(models.Model):
 
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -16,7 +20,7 @@ class Post(models.Model):
 	date_updated = models.DateTimeField(auto_now=True)
 	height_field = models.IntegerField(default=0)
 	width_field = models.IntegerField(default=0)
-	image = models.ImageField(null=True, blank=True, height_field="height_field", width_field="width_field")
+	image = models.ImageField(upload_to=upload_location, null=True, blank=True, height_field="height_field", width_field="width_field")
 
 
 	def __str__(self):
@@ -43,3 +47,5 @@ class Post(models.Model):
 		if prev:
 			return prev.first()
 		return False
+
+
