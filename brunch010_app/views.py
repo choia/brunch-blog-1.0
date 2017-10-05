@@ -1,4 +1,5 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -77,3 +78,8 @@ def post_delete(request):
 
 	return render(request, 'delete.html', context)
 
+
+'''Logout the user'''
+def logout_view(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('brunch010:post_home'))

@@ -29,12 +29,13 @@
             <li><a href="#">About</a></li>
             <li><a href="#">Projects</a></li>
             <li><a href="#">Contacts</a></li>
-          </ul>
+          </ul>          
+          <ul class="nav navbar-right">
           {% if user.is_authenticated %}
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Logout</a></li>
-          </ul>
+            <li><a href="{% url 'brunch010:user_logout' %}">Logout</a></li>
           {% endif %}
+          </ul>
+          
         </div><!--/.nav-collapse -->        
       </div>
     </nav>

@@ -12,6 +12,6 @@ urlpatterns = [
 	url(r'^delete/$', views.post_delete, name='post_delete'),					
 	# Login
 	url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='user_login'),
-	url(r'^logout/$', auth_views.logout, name='user_logout'),
+	url(r'^logout/$', views.logout_view, name='user_logout'),
 
 ]
