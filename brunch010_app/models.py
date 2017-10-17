@@ -16,6 +16,7 @@ class Post(models.Model):
 	title = models.CharField(max_length=180)
 	email = models.EmailField()
 	content = MarkdownxField()
+	draft = models.BooleanField(default=False)
 	date_added = models.DateTimeField(auto_now_add=True)
 	date_updated = models.DateTimeField(auto_now=True)
 	height_field = models.IntegerField(default=0)

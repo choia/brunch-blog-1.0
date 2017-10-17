@@ -15,7 +15,9 @@
 	{% endif %}
 </div>
 </div>
-	<div class="detail-title">{{ instance.title }}</div><hr/>
+	<div class="detail-title">{{ instance.title }} 
+	  <small>{% if instance.draft %}<span class="custom-draft"> Draft</span>{% endif %}</small>
+	</div><hr/>
 	{% if instance.image %}
       <img src="{{ instance.image.url }}" class="img-responsive" alt="image" />
 	{% endif %}
