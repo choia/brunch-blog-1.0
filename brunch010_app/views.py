@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from .forms import PostForm
 from .models import Post
@@ -9,7 +9,11 @@ from .models import Post
 
 '''Main Home Page'''
 def post_home(request):
-	queryset_list = Post.objects.all().order_by('-date_added')
+	# queryset_list = Post.objects.all().order_by('-date_added')
+	queryset_list = Post.objects.active()
+	if request.user.is_superuser:
+		queryset_list = Post.objects.all()
+
 	paginator = Paginator(queryset_list, 6)
 	page = request.GET.get('page')
 	try:
@@ -28,6 +32,9 @@ def post_home(request):
 
 '''Create Post Page'''
 def post_create(request):
+	if not request.user.is_superuser:
+		raise Http404
+
 	if request.method != 'POST':
 		form = PostForm()
 	else:
@@ -46,6 +53,9 @@ def post_create(request):
 '''Detailed Post Page'''
 def post_detail(request, id):
 	instance = get_object_or_404(Post, id=id)
+	if instance.draft:	
+		if not request.user.is_superuser:
+			raise Http404
 	context = {
 		"instance": instance,
 	}
