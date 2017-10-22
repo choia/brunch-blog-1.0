@@ -10,9 +10,9 @@ from .models import Post
 '''Main Home Page'''
 def post_home(request):
 	# queryset_list = Post.objects.all().order_by('-date_added')
-	queryset_list = Post.objects.active()
+	queryset_list = Post.objects.active().order_by('-id')
 	if request.user.is_superuser:
-		queryset_list = Post.objects.all()
+		queryset_list = Post.objects.all().order_by('-id')
 
 	paginator = Paginator(queryset_list, 6)
 	page = request.GET.get('page')

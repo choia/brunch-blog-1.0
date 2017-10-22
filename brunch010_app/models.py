@@ -30,9 +30,6 @@ class Post(models.Model):
 	image = models.ImageField(upload_to=upload_location, null=True, blank=True, height_field="height_field", width_field="width_field")
 	objects = PostManager()
 
-	class Meta:
-		ordering = ["-date_updated", "timestamp"]
-
 
 	def __str__(self):
 		return self.title
@@ -47,14 +44,28 @@ class Post(models.Model):
 
 
 	def get_next(self):
-		next = Post.objects.filter(id__gt=self.id).order_by('id')
-		if next:
-			return next.first()
+		next_id = Post.objects.filter(id__gt=self.id)
+		if next_id:
+			return next_id.first()
+		return False
+
+	
+	def get_next_draft(self):
+		next_id = Post.objects.filter(id__gt=self.id).exclude(draft=True)
+		if next_id:
+			return next_id.first()
 		return False
 
 
 	def get_prev(self):
-		prev = Post.objects.filter(id__lt=self.id).order_by('-id')
-		if prev:
-			return prev.first()
+		prev_id = Post.objects.filter(id__lt=self.id).order_by('-id')			
+		if prev_id:
+			return prev_id.first()
 		return False
+
+
+	def get_prev_draft(self):
+		prev_id = Post.objects.filter(id__lt=self.id).order_by('-id').exclude(draft=True)
+		if prev_id:
+			return prev_id.first()
+		return False			
