@@ -21,7 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bk&kbwm1$$h7xj=*2k&zjfs=a%l&$ghbr=34jc39we#1o5j*fx'
+with open(os.path.join(BASE_DIR, 'env/SECRET_KEY.txt')) as f:
+    SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -139,3 +140,6 @@ MEDIA_ROOT = 'mediafiles'
 
 # Markdownx Settings
 MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
+
+# Redirection to Login Page 
+LOGIN_URL = '/login/'

@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
@@ -9,7 +10,6 @@ from .models import Post
 
 '''Main Home Page'''
 def post_home(request):
-	# queryset_list = Post.objects.all().order_by('-date_added')
 	queryset_list = Post.objects.active().order_by('-id')
 	if request.user.is_superuser:
 		queryset_list = Post.objects.all().order_by('-id')
@@ -31,6 +31,7 @@ def post_home(request):
 
 
 '''Create Post Page'''
+@login_required
 def post_create(request):
 	if not request.user.is_superuser:
 		raise Http404
@@ -64,6 +65,7 @@ def post_detail(request, id):
 
 
 '''Update Post Page'''
+@login_required
 def post_update(request, id=None):
 	instance = get_object_or_404(Post, id=id)
 	if request.method != 'POST':
@@ -83,6 +85,7 @@ def post_update(request, id=None):
 
 
 '''Delete Post Page'''
+@login_required
 def post_delete(request):
 	context = {}
 
