@@ -1,0 +1,1 @@
+web: gunicorn brunch010_app.wsgi --log-file -
