@@ -1,1 +1,1 @@
-web: gunicorn brunch010_app.wsgi --log-file -
+web: gunicorn brunch010.wsgi --log-file -
