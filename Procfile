@@ -1,1 +1,1 @@
-web: sh -c 'cd ./brunch010/ && exec gunicorn brunch010_app.wsgi --log-file -'
+web: gunicorn brunch010.wsgi --log-file -

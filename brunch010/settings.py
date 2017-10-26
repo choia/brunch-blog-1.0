@@ -25,9 +25,9 @@ with open(os.path.join(BASE_DIR, 'env/SECRET_KEY.txt')) as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['brunch-blog.herokuapp.com/']
+ALLOWED_HOSTS = ['brunch-blog.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
@@ -85,21 +85,25 @@ WSGI_APPLICATION = 'brunch010.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-if os.getcwd() == '/app':
-import dj_database_url
-DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost')
-}
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-#}
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# if os.getcwd() == '/app':
+#     import dj_database_url
 
-# db_from_env = dj_database_url.config()
-# DATABASES['default'].update(db_from_env)
+#     DATABASES = {
+#         'default': dj_database_url.config(default='postgres://localhost')
+#     }
+#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
