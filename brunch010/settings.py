@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', '+lmfnw2v^+t+=a@*tl81zy+*$^barvzp=+)n5=m9gf1r9#dff1f')
 
 # with open(os.path.join(BASE_DIR, 'env/SECRET_KEY.txt')) as f:
 #     SECRET_KEY = f.read().strip()
@@ -146,7 +146,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -165,13 +165,12 @@ AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY')
 AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
+
 AWS_LOCATION = 'static'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'mysite/static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
