@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from boto.s3.connection import S3Connection
 from datetime import datetime
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,13 +24,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+# s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 # with open(os.path.join(BASE_DIR, 'env/SECRET_KEY.txt')) as f:
 #     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['brunch-blog.herokuapp.com']
 
 
 # Application definition
@@ -47,6 +50,7 @@ INSTALLED_APPS = [
     'markdownx',
     'markdownify',
     'crispy_forms',
+    'storages',
 ]
 
 
@@ -102,7 +106,7 @@ DATABASES = {
     }
 }
 
-import dj_database_url
+
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
