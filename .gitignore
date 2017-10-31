@@ -9,7 +9,7 @@ env/
 # brunch010/__pycache__/*
 # brunch010_app/__pycache__/*
 brunch010_app/migrations/*
-
+/brunch010/settings-old.py
 
 # Django stuff:
 *.log
