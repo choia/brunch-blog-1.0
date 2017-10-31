@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from boto.s3.connection import S3Connection
 from datetime import datetime
 import dj_database_url
 
