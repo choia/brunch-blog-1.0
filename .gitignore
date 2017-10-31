@@ -1,11 +1,11 @@
 #.gitignore
-# db.sqlite3
+db.sqlite3
 env/
 /brunch_venv/*
 /media/*
-/mediafiles/*
+#/mediafiles/*
 /static/*
-/staticfiles/*
+#/staticfiles/*
 # brunch010/__pycache__/*
 # brunch010_app/__pycache__/*
 brunch010_app/migrations/*

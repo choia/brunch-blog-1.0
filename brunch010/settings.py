@@ -22,17 +22,20 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# if DEBUG == False:
-#     SECRET_KEY = os.environ.get('SECRET_KEY')
-# else:
-with open(os.path.join(BASE_DIR, 'env/SECRET_KEY.txt')) as f:
-    SECRET_KEY = f.read().strip()
-
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
+# SECURITY WARNING: keep the secret key used in production secret!
+if DEBUG:
+    SECRET_KEY = os.environ.get('SECRET_KEY')  
+else:
+    # with open(os.path.join(BASE_DIR, 'env/SECRET_KEY.txt')) as f:
+    #     SECRET_KEY = f.read().strip()
+        
+    SECRET_KEY = '+lmfnw2v^+t+=a@*tl81zy+*$^barvzp=+)n5=m9gf1r9p@zj$e'
+
 
 ALLOWED_HOSTS = ['brunch-blog.herokuapp.com']
 
@@ -176,3 +179,6 @@ MEDIA_ROOT = MEDIA_URL
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+SECURE_PROXY_SSL_HEADER = (‘HTTP_X_FORWARDED_PROTO’, ‘https’)
