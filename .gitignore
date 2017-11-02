@@ -2,10 +2,10 @@
 db.sqlite3
 env/
 /brunch_venv/*
-/media/*
-/mediafiles/*
-/static/*
-/staticfiles/*
+#/media/*
+#/mediafiles/*
+#/static/*
+#/staticfiles/*
 # brunch010/__pycache__/*
 # brunch010_app/__pycache__/*
 brunch010_app/migrations/*

@@ -1,0 +1,127 @@
+/*Base.CSS - Main */
+
+h1 {
+	color: #5a5a5a;
+}
+
+body {
+	padding-top: 70px;
+	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+	font-size: 1.7em;
+	color: black;
+}
+
+p {
+	margin-bottom: 2.5rem;
+}
+
+/* Navigation Bar - Brunch */
+
+.navbar-default {
+	background-color: #3e474f;
+	background-image: none;
+	background-repeat: no-repeat; 
+}
+
+.navbar-brand {
+	font-size: 1.5em;
+}
+
+.navbar-default .navbar-brand {
+	color: white;
+}
+
+.navbar-default .navbar-brand:hover {
+	color: #b2bbbd;
+}
+
+.navbar-default .navbar-brand:focus {
+	color: #118eff;
+}
+
+/* Navigation Bar - Home / About / Contact */
+
+.nav li {
+	font-size: 1.3em;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.navbar-default .navbar-nav li a {
+	color: white;
+}
+
+.navbar-default .navbar-nav li a:hover {
+	color: #b2bbbd;
+}
+
+.navbar-default .navbar-nav li a:focus {
+	color: #118eff;
+}
+
+/* Navigation Bar - Logout */
+
+.navbar-right {
+	margin-right: 12em;
+}
+
+/* Title Class in index.html */
+
+.title {
+	font-size: 1.7em;
+}
+
+.title a {
+	color: #5a5a5a;
+}
+
+.title a:hover {
+	color: #118eff;	
+}
+
+/* Content & Date Label Class in index.html */
+
+.label {
+	display: inline-block;
+	font-size: 90%;
+}
+
+.label-page {
+	display: inline-block;
+	padding: .3em .7em .5em;
+	font-weight: 900;
+	line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label-text-color {
+	color: #5a5a5a;
+}
+
+.label-text {
+	font-size: 80%;
+}
+
+/* Image Class in index.html */
+
+.col-custom img {
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+}
+
+/* Horizontal Class in index.html */
+.hr-custom {
+	margin-right: 18%;
+}
+
+/* Title in detail.html */
+.detail-title {
+	display: inline-block;
+	font-size: 100%;
+
+}
