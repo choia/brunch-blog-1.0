@@ -35,9 +35,8 @@ DEBUG = False
 
 SECRET_KEY = os.environ.get('SECRET_KEY')  
 
-ALLOWED_HOSTS = ['brunch-blog.herokuapp.com']
-
-SECURE_PROXY_SSL_HEADER = (‘HTTP_X_FORWARDED_PROTO’, ‘https’)
+# ALLOWED_HOSTS = ['brunch-blog.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
