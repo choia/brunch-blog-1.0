@@ -1,8 +1,7 @@
 # brunch010/__pycache__/*
 # brunch010_app/__pycache__/*
-# brunch010_app/migrations/*
 
-
+brunch010_app/migrations/*
 db.sqlite3
 env/
 /brunch_venv/*
